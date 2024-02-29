@@ -1,4 +1,4 @@
-def main(name):
+def main():
     print(int("10", 2))
 
 
