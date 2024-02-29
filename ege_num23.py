@@ -10,7 +10,7 @@ def calc(begin, end):
 
 
 def main():
-    print(calc(1, 25)) # Вызываем функцию калькулятор, от a до b
+    print(calc(1, 25))  # Вызываем функцию калькулятор, от a до b
 
 
 if __name__ == '__main__':
