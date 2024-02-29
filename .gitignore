@@ -1,3 +1,4 @@
 
 *.xml
-.idea/EGE_tasks.iml
+.gitignore
+.idea
