@@ -7,7 +7,12 @@ def convert_to(num, count):
 
 
 def main():
-    convert_to("12345", 8)
+    # convert_to(12345, 8)
+    print(bin(int("F2E", 16))[2:])
+    k = 0
+    for i in range(18, 167):
+        k += 1
+    print(k)
 
 
 if __name__ == '__main__':
