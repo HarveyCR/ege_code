@@ -1,29 +1,35 @@
-f = open("24-s1.txt", "r")  # Создаем файловую переменную. В ней указывается путь к файлу
+def game(k1, k2, pos):  # Функция игры
+    # дальше три проверки
+    if k1 + k2 >= 69 and (pos == 2 or pos == 4):  # Если сейчас нужный нам Ход и уловия Выигрыша выполены, то возврашаем True
+        return True
+    if k1 + k2 < 69 and pos == 4:  # Если сейчас нужный нам Ход, но уловия Выигрыша не выполены, то возврашаем False
+        return False
+    if k1 + k2 >= 69 and pos != 4:  # Если уловия Выигрыша выполены, но не нужный нам Ход, то возврашаем False
+        return False
+    # Далше количество if равно количеству ходов в игре
 
-n = 0  # Счетчик строк
+    if pos == 0:  # Первый ход
+        return game(k1 + 2, k2, pos + 1) and game(k1 * 2, k2, pos + 1) and game(k1, k2 + 2, pos + 1) and game(k1, k2 * 2,
+                                                                                                           pos + 1)
+    if pos == 1:  # Второй ход
+        return game(k1 + 2, k2, pos + 1) or game(k1 * 2, k2, pos + 1) or game(k1, k2 + 2, pos + 1) or game(k1,
+                                                                                                              k2 * 2,
+                                                                                                              pos + 1)
+    if pos == 2:  # Первый ход
+        return game(k1 + 2, k2, pos + 1) and game(k1 * 2, k2, pos + 1) and game(k1, k2 + 2, pos + 1) and game(k1,
+                                                                                                              k2 * 2,
+                                                                                                              pos + 1)
+    if pos == 3:  # Первый ход
+        return game(k1 + 2, k2, pos + 1) or game(k1 * 2, k2, pos + 1) or game(k1, k2 + 2, pos + 1) or game(k1,
+                                                                                                           k2 * 2,
+                                                                                                           pos + 1)
 
-while True:  # Открываем цикл чтения данных из файла
 
-    s = f.readline()  # Читаем строку
+def main():
+    for i in range(1, 59):
+        if game(9, i, 0):  # Выфункцию игры, k1, k2 - куоличество камней в кучах. pos - ход, в начале 0
+            print(i)
 
-    flag = 0  # Обнуляем флаг события
 
-    for i in range(0, len(s) - 2):  # Работае посимвольно со строкой
-
-        if s[i] == 'F' and s[i + 2] == 'O':  # Проверяем событие по условию задачи
-
-            flag = 1  # Поднимаем флаг
-
-            if flag == 1:  # Если флаг поднят,
-
-                n += 1  # считаем эту строку
-
-                break  # прерываем посимвольный перебор
-
-    if not s:  # Если строк больше нет
-
-        break  # прерываем чтения данных из файла
-
-f.close()  # Закрываем файл
-
-print(n)
+if __name__ == '__main__':
+    main()
